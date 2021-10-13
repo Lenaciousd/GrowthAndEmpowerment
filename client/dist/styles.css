@@ -1,3 +1,51 @@
 body {
- background-color: rgb(141, 53, 163);
+ background-color: lavenderblush;
+ /* text-align: center; */
+}
+
+.coachingType {
+  background-color: white;
+  padding: 7%;
+  line-height: 1.5;
+  margin: 25px;
+  text-align: center;
+  width: 500px;
+}
+
+.reviewForm {
+  display:flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 5%;
+  width: 250px;
+}
+
+button {
+  height: 20px;
+  width: 80px;
+  background-color: lavender;
+  border-radius: 20px;
+}
+
+/* .reviewsList {
+  height: 200px;
+  overflow: scroll;
+} */
+
+.review {
+  background-color: white;
+  padding: 7%;
+  line-height: 1.5;
+  margin: 10px;
+  text-align: center;
+  width: 500px;
+}
+
+.aboutMe {
+  background-color: white;
+  padding: 7%;
+  line-height: 1.5;
+  margin: 25px;
+  text-align: center;
+  width: 700px;
 }
