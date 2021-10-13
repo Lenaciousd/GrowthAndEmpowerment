@@ -6,6 +6,9 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+# Config files
+db.config.js
+
 # Bundled File
 client/dist/bundle.js
 client/dist/bundle.js.map
