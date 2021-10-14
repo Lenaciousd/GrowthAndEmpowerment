@@ -4,7 +4,7 @@ const AboutMe = () => {
 
   return (
     <div className="aboutMe">
-      <h2>About Lenora</h2>
+      <h2>Meet Lenora</h2>
       <img src="/assets/lenoraOnPath.jpg" alt="Lenora"/>
       <p>
         I have spent most of my life as a childcare professional working with children and their parents. I believe that if children are treated with respect and are taught important skills such as problem solving, critical thinking, open mindedness, empathy, and active listening, that our future generations will have much fewer problems. I received a Bachelor's Degree in Psychology from the University of California, San Diego. In addition to Psychology, I have also studied relationships and marriage, early childhood education, parenting, health, nutrition, well being, finding purpose, etc. I have experience helping people with relationship concerns, providing parenting advice and tips, planning out eating and fitness goals, reducing stress, looking at their lives in a new way, and general goal setting while providing motivation and support. I believe my purpose in life is to be a lifelong learner, a catalyst of positive change, and a person with meaningful relationships. To be someone that shares insights and reminds people of their own agency. To be someone that has fun and enjoys all that the world has to offer.
