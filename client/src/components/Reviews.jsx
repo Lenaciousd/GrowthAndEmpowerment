@@ -1,34 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import ReviewsListItem from './ReviewsListItem.jsx'
+import {Review} from '../api.js'
 
 const Reviews = () => {
   const [reviewCategory, setReviewCategory] = useState('')
   const [reviewDescription, setReviewDescription] = useState('')
   const [reviewGender, setReviewGender] = useState('')
   const [reviewAge, setReviewAge] = useState('')
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(0)
   const [reviewsList, setReviewsList] = useState([{ description: 'review1' }, { description: 'review2' }])
   const [reviewToDelete, setReviewToDelete] = useState('')
-  const updatedReviews = reviewsList.map((review, index) => {
-    const description = review.description || 'Amazing!'
-    const category = review.category || 'Relationship'
-    const age = review.age || '20s'
-    const gender = review.gender || 'Male'
-    return <div className="review" key={index}>
-      <p>
-        {description}
-      </p>
-      - Received {category} Counseling, {age}, {gender}    <button onClick={(e) => { handleDelete(e, review.description) }}>Delete</button>
-    </div>
-  })
+  const [isEditing, setIsEditing] = useState(false)
 
   const getReviews = () => {
-    axios({
-      method: 'get',
-      url: '/reviews',
-      dataType: 'json'
-    })
+    Review.list()
       .then((data) => {
+        console.log(data.data)
         setReviewsList(data.data)
       })
       .catch((err) => {
@@ -36,26 +23,19 @@ const Reviews = () => {
       })
   }
 
-  const postNewReview = () => {
-    console.log('here')
-    console.log(reviewAge, reviewGender, reviewCategory, reviewDescription)
+  const updatedReviews = reviewsList.map((review) => {
+    return <ReviewsListItem key={review.id} review={review} isEditing={isEditing} setIsEditing={setIsEditing} getReviews={getReviews}/>
+  })
 
-    axios({
-      method: 'post',
-      url: '/reviews',
-      data: {
-        description: reviewDescription,
-        category: reviewCategory,
-        age: reviewAge,
-        gender: reviewGender
-      },
-      dataType: 'json'
-    })
+  const postNewReview = () => {
+
+   Review.create({
+    description: reviewDescription,
+    category: reviewCategory,
+    age: reviewAge,
+    gender: reviewGender
+  })
       .then((data) => {
-        // setReviewDescription("")
-        // setReviewCategory("")
-        // setReviewAge("")
-        // setReviewGender("")
         getReviews()
       })
       .catch((err) => {
@@ -73,29 +53,13 @@ const Reviews = () => {
     postNewReview()
   }
 
-  const handleDelete = (e, description) => {
-    e.preventDefault()
-    axios({
-      method: 'delete',
-      url: '/reviews',
-      data: { description: description },
-      dataType: 'json'
-    })
-      .then((data) => {
-        getReviews()
-      })
-      .catch((err) => {
-        console.log('could not post review ', err)
-      })
-  }
-
   return (
     <div >
 
       <form className="reviewForm">
         <h3>Add a Review</h3>
         <div>
-          <textarea type="textarea" name="reviewDescription" placeholder="Helped me figure out next steps for starting my business" onChange={(e) => { setReviewDescription(e.target.value) }} />
+          <textarea className="formTextArea" type="textarea" name="reviewDescription" placeholder="Helped me figure out next steps for starting my business" onChange={(e) => { setReviewDescription(e.target.value) }} />
         </div>
 
         <div>
