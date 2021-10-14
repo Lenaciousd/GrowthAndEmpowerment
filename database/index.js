@@ -38,12 +38,18 @@ const postReview = (req, callback) => {
   })
 }
 
-const updateReview = (req, callback) => {
-
+const updateReview = (id, review, callback) => {
+  connection.query(`UPDATE reviews SET description = ? WHERE id = ?`, [review.description, id], (error, data) => {
+    if (error) {
+      callback(error, null)
+    } else {
+      callback(null, data)
+    }
+  })
 }
 
-const deleteReview = (req, callback) => {
-  connection.query(`DELETE FROM reviews WHERE description=?`, [req.body.description], (error, data) => {
+const deleteReview = (id, callback) => {
+  connection.query(`DELETE FROM reviews WHERE id = ?`, [id], (error, data) => {
     if (error) {
       callback(error, null)
     } else {
