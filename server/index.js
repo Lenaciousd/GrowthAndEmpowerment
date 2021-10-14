@@ -33,8 +33,18 @@ app.post('/reviews', (req, res) => {
   })
 })
 
-app.delete('/reviews', (req, res) => {
-  db.deleteReview(req, (error, data) => {
+app.put('/reviews/:id', (req, res) => {
+  db.updateReview(req.params.id, req.body, (error, data) => {
+    if (error) {
+      console.log('delete request failed ', error)
+    } else {
+      res.send(data)
+    }
+  })
+})
+
+app.delete('/reviews/:id', (req, res) => {
+  db.deleteReview(req.params.id, (error, data) => {
     if (error) {
       console.log('delete request failed ', error)
     } else {
