@@ -31,8 +31,8 @@ const ReviewsListItem = ({ review, isEditing, setIsEditing, getReviews }) => {
         console.log('could not edit review ', err)
       })
   }
-  const deleteButton = <button onClick={handleDelete}>Delete</button>
-  const submitEditButton = <button onClick={handleEdit}>Submit</button>
+  const deleteButton = <div className="buttonWrap"><button onClick={handleDelete}>Delete</button></div>
+  const submitEditButton = <div className="buttonWrap"><button onClick={handleEdit}>Submit</button></div>
   return (
     <div className="review">
       <div>
@@ -40,7 +40,7 @@ const ReviewsListItem = ({ review, isEditing, setIsEditing, getReviews }) => {
           isEditing === review.id
             ? <textarea className="editingTextArea" value={editedDescription} onChange={(e) => { setEditedDescription(e.target.value) }} />
             : (
-              <p onClick={() => {
+              <p className="reviewDesc" onClick={() => {
                 setIsEditing(review.id);
                 setEditedDescription(description);
                 console.log('you clicked ', review.id, description)
@@ -50,7 +50,7 @@ const ReviewsListItem = ({ review, isEditing, setIsEditing, getReviews }) => {
             )
         }
       </div>
-      {category} Counseling | {age} | {gender} |   {isEditing === review.id ? submitEditButton : deleteButton}
+      {category} Counseling | {age} | {gender}   {isEditing === review.id ? submitEditButton : deleteButton}
     </div>
   )
 }
