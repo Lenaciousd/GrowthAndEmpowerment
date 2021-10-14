@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ReviewsListItem from './ReviewsListItem.jsx'
-import {Review} from '../api.js'
+import { Review } from '../api.js'
 
 const Reviews = () => {
   const [reviewCategory, setReviewCategory] = useState('')
@@ -15,7 +15,6 @@ const Reviews = () => {
   const getReviews = () => {
     Review.list()
       .then((data) => {
-        console.log(data.data)
         setReviewsList(data.data)
       })
       .catch((err) => {
@@ -24,17 +23,17 @@ const Reviews = () => {
   }
 
   const updatedReviews = reviewsList.map((review) => {
-    return <ReviewsListItem key={review.id} review={review} isEditing={isEditing} setIsEditing={setIsEditing} getReviews={getReviews}/>
+    return <ReviewsListItem key={review.id} review={review} isEditing={isEditing} setIsEditing={setIsEditing} getReviews={getReviews} />
   })
 
   const postNewReview = () => {
 
-   Review.create({
-    description: reviewDescription,
-    category: reviewCategory,
-    age: reviewAge,
-    gender: reviewGender
-  })
+    Review.create({
+      description: reviewDescription,
+      category: reviewCategory,
+      age: reviewAge,
+      gender: reviewGender
+    })
       .then((data) => {
         getReviews()
       })
@@ -96,11 +95,11 @@ const Reviews = () => {
           </select>
         </div>
 
-        <button type="submit" value="Submit" onClick={handleSubmit}>
-
-          Submit
-        </button>
-
+        <div className="buttonWrap">
+          <button type="submit" value="Submit" onClick={handleSubmit}>
+            Submit
+          </button>
+        </div>
       </form>
 
 
