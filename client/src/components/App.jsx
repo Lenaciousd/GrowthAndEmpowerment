@@ -8,16 +8,31 @@ const App = () => {
 
   return (
     <div>
+      <div className="navBar">
+        <h1>Growth & Empowerment Life Coaching</h1>
+      </div>
 
       <div className="main">
-        <h1>Growth & Empowerment Life Coaching</h1>
-        <div>
-          <h1> Welcome! </h1>
+
+        <div className="topInfo">
+          <img className="topImg" src="/assets/benchByLake.jpg" />
+          <div className="topDescription">
+           <p> <h2> Welcome! </h2> </p>
+
+            <p>Thinking about making a change?</p>
+            <p>Looking for...</p>
+            Support?
+            Motivation?
+            clarity?
+            <p> <h2> Start your journey Today! </h2> </p>
+
+          </div>
+
         </div>
         <CounselingTypesList />
         <AboutMe />
         <Reviews />
-        {/* <ContactInfo /> */}
+        <ContactInfo />
       </div>
 
     </div>
