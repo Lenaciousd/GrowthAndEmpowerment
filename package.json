@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Lenaciousd/GrowthAndEmpowerment#readme",
   "dependencies": {
+    "@mui/material": "^5.2.2",
     "axios": "^0.23.0",
     "babel": "^6.23.0",
     "body-parser": "^1.19.0",
